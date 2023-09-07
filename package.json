@@ -1,11 +1,12 @@
 {
-  "name": "JATE",
+  "name": "jate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Progressive Web App that creates notes or code snippets with or without an internet connection",
   "main": "server.js",
   "scripts": {
     "start:dev": "",
-    "start": "",
+    "start": "node ./server/server.js",
+    "dev": "nodemon ./server/server.js",
     "server": "",
     "build": "",
     "install": "",
@@ -15,11 +16,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "if-env": "^1.0.4"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.22"
   }
 }
