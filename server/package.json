@@ -1,10 +1,10 @@
 {
-    "name": "JATE",
+    "name": "progressive-web-app-text-editor",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "server/server.js",
     "scripts": {
-        "server": "nodemon server.js --ignore client"
+        "dev": "nodemon ./server/server.js"
     },
     "keywords": [],
     "author": "",
@@ -15,4 +15,5 @@
     "devDependencies": {
         "nodemon": "^2.0.4"
     }
+
 }
