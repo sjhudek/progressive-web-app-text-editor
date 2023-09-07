@@ -10,8 +10,8 @@ module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: '.client/src/js/index.js',
-      install: '.client/src/js/install.js'
+      main: './client/src/js/index.js',  // Adjust this path
+      install: './client/src/js/install.js'  // Adjust this path
     },
     output: {
       filename: '[name].bundle.js',
@@ -28,16 +28,16 @@ module.exports = () => {
         short_name: 'App',
         description: 'Your App Description',
         background_color: '#ffffff',
-        crossorigin: 'use-credentials', // can be null, use-credentials or anonymous
+        crossorigin: 'use-credentials',
         icons: [
           {
-            src: path.resolve('src/images/icon.png'),
-            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+            src: path.resolve('client/src/images/logo.png'), // Correcting the icon path
+            sizes: [96, 128, 192, 256, 384, 512]
           }
         ]
       }),
       new InjectManifest({
-        swSrc: './client/src.sw.js'
+        swSrc: './client/src-sw.js'
       })
     ],
 
