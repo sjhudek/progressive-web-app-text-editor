@@ -2,6 +2,22 @@
 import { getDb, putDb } from './database';
 import { header } from './header';
 
+const editorElement = document.getElementById('editor');
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const editorElement = document.getElementById('editor');
+  
+  // Initialize the editor with saved content from IndexedDB, or header if nothing is saved
+  const savedContent = await getDb();
+  editorElement.innerHTML = savedContent || header;
+
+  // Listen for when the window loses focus, then save editor content to IndexedDB
+  window.addEventListener('blur', async () => {
+    const editorContent = editorElement.innerHTML;
+    await putDb(editorContent);
+  });
+});
+
 export default class {
   constructor() {
     const localData = localStorage.getItem('content');
