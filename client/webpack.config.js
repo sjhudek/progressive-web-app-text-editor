@@ -12,11 +12,11 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'client'),
     },
     plugins: [
       new InjectManifest({
-        swSrc: './src/src-sw.js',
+        swSrc: path.resolve(__dirname, './src-sw.js'),
         swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
@@ -27,7 +27,7 @@ module.exports = () => {
         crossorigin: 'use-credentials', // can be null, use-credentials or anonymous
         icons: [
           {
-            src: path.resolve('src/assets/icon.png'),
+            src: path.resolve(__dirname, 'src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
           },
         ],
