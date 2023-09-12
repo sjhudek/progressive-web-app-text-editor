@@ -15,6 +15,10 @@ module.exports = () => {
       path: path.resolve(__dirname, 'client'),
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'J.A.T.E'
+      }),
       new InjectManifest({
         swSrc: path.resolve(__dirname, './src-sw.js'),
         swDest: 'src-sw.js',
@@ -25,10 +29,13 @@ module.exports = () => {
         description: 'My awesome Progressive Web App!',
         background_color: '#ffffff',
         crossorigin: 'use-credentials', // can be null, use-credentials or anonymous
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve(__dirname, 'src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes,
+            destination: path.join('assets', 'icons')
           },
         ],
       }),
