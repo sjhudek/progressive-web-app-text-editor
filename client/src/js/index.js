@@ -7,32 +7,6 @@ import "../css/style.css";
 const main = document.querySelector("#main");
 main.innerHTML = "";
 
-// Listen for the "beforeinstallprompt" event to capture the prompt.
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault(); // Prevent the default browser prompt.
-  deferredPrompt = e; // Store the event for later use.
-});
-
-const installButton = document.getElementById("buttonInstall");
-
-installButton.addEventListener("click", () => {
-  if (deferredPrompt) {
-    
-      console.error("Deferred prompt is not defined");
-      return;
-    
-    deferredPrompt.prompt(); // Show the installation prompt.
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the PWA installation");
-      } else {
-        console.log("User dismissed the PWA installation");
-      }
-      deferredPrompt = null; // Reset the prompt variable.
-    });
-  }
-});
-
 const loadSpinner = () => {
   const spinner = document.createElement("div");
   spinner.classList.add("spinner");
