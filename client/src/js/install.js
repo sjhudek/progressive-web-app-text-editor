@@ -1,5 +1,5 @@
 // Import deferredPrompt from index.js
-import { deferredPrompt } from "./index";
+// import { deferredPrompt } from "./index";
 const butInstall = document.getElementById('buttonInstall');
 
 // Logic for installing the PWA
@@ -9,7 +9,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
 
   // Store the event to use it later
-  deferredPrompt = e;
+  window.deferredPrompt = e;
   console.log('beforeinstallprompt event captured');
 
   // Optionally, show your own custom install button
@@ -27,12 +27,12 @@ butInstall.addEventListener('click', async () => {
     // Hide the install button
     butInstall.style.display = 'none';
   
-    if (deferredPrompt) {
+    if (window.deferredPrompt) {
       // Show the install prompt
-      deferredPrompt.prompt();
+      window.deferredPrompt.prompt();
   
       // Wait for the user to respond to the prompt
-      const { outcome } = await deferredPrompt.userChoice;
+      const { outcome } = await window.deferredPrompt.userChoice;
   
       if (outcome === 'accepted') {
         console.log('User accepted the install prompt');
@@ -40,7 +40,7 @@ butInstall.addEventListener('click', async () => {
         console.log('User dismissed the install prompt');
       }
   
-      deferredPrompt = null;
+      window.deferredPrompt = null;
     }
   });
 
